@@ -1,0 +1,10 @@
+streamlit==0.83.0
+pandas
+numpy
+matplotlib
+tweepy
+vaderSentiment
+wordcloud==1.8.1
+pytrends
+seaborn
+plotly
