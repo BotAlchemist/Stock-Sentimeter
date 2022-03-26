@@ -2,7 +2,7 @@ streamlit==0.83.0
 pandas
 numpy
 matplotlib
-tweepy
+tweepy==3.9.0
 vaderSentiment
 wordcloud==1.8.1
 pytrends
