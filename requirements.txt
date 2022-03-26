@@ -8,3 +8,4 @@ wordcloud==1.8.1
 pytrends
 seaborn
 plotly
+python-dotenv
