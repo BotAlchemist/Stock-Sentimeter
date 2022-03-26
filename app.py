@@ -15,13 +15,19 @@ from wordcloud import WordCloud
 from pytrends.request import TrendReq
 import seaborn as sns
 import plotly.express as px
-
+from dotenv import load_dotenv
+import os
 
 
 #from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 st.set_page_config(layout='wide',page_title="Sentimeter")
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
+
+
+
+
 
 
 
@@ -54,15 +60,23 @@ i_source = st.sidebar.selectbox("Source", ['Twitter', 'Google Trends'])
 if i_source == "Twitter":
 
     ################################################################### Update & fetch tweets #######################################
-    consumerKey = 'VsyMctyRBOnED0LBs3p6god55'
-    consumerSecret = '8QLZGdnvyR4tqGJXsYgux574JiiiMb2SUgWecBectWApQVEZfk'
-    accessToken = '783919955607560192-XMnzqtx7E7ggihOBdcaQKUtEKX9oTu7'
-    accessTokenSecret = 'z85SZocmC8kQMlFa34XiY7KJcdjxVhokCcHhYwx4KWd8s'
-    auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
-    auth.set_access_token(accessToken, accessTokenSecret)
-    api = tweepy.API(auth, wait_on_rate_limit=True)
+
     
     with st.beta_expander("Refresh"):
+        load_dotenv()
+        
+        consumerKey = os.getenv("consumerKey")
+        consumerSecret = os.getenv("consumerSecret")
+        accessToken = os.getenv("accessToken")
+        accessTokenSecret = os.getenv("accessTokenSecret")
+        auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
+        auth.set_access_token(accessToken, accessTokenSecret)
+        api = tweepy.API(auth, wait_on_rate_limit=True)
+    
+    
+    
+    
+    
         update_col1, update_col2, update_col3, update_col4 ,update_col5= st.beta_columns(5)
         
         
