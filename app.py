@@ -15,7 +15,7 @@ from wordcloud import WordCloud
 from pytrends.request import TrendReq
 import seaborn as sns
 import plotly.express as px
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
 
 
@@ -63,12 +63,12 @@ if i_source == "Twitter":
 
     
     with st.beta_expander("Refresh"):
-        load_dotenv()
+        #load_dotenv()
         
-        consumerKey = os.getenv("consumerKey")
-        consumerSecret = os.getenv("consumerSecret")
-        accessToken = os.getenv("accessToken")
-        accessTokenSecret = os.getenv("accessTokenSecret")
+        consumerKey = st.secrets["consumerKey"]
+        consumerSecret = st.secrets["consumerSecret"]
+        accessToken = st.secrets["accessToken"]
+        accessTokenSecret = st.secrets["accessTokenSecret"]
         auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
         auth.set_access_token(accessToken, accessTokenSecret)
         api = tweepy.API(auth, wait_on_rate_limit=True)
